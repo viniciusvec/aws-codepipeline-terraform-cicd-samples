@@ -148,7 +148,8 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "iam:CreatePolicy",
         "iam:CreateRole",
         "iam:PassRole",
-        "iam:PutRolePolicy"
+        "iam:PutRolePolicy",
+        "iam:DetachRolePolicy"
       ],
       "Resource": "*"
     }
