@@ -139,6 +139,7 @@ resource "aws_iam_policy" "codepipeline_policy" {
       "Action": [
         "ec2:*",
         "ecs:*",
+        "vpc:publicIps:*",
         "elasticloadbalancing:*",
         "rds:*",
         "tag:*",
