@@ -4,6 +4,11 @@
 #http://aws.amazon.com/agreement or other written agreement between Customer and either
 #Amazon Web Services, Inc. or Amazon Web Services EMEA SARL or both.
 
+resource "aws_codestarconnections_connection" "github" {
+  name          = "example-connection"
+  provider_type = "GitHub"
+}
+
 resource "aws_codepipeline" "terraform_pipeline" {
 
   name     = "${var.project_name}-pipeline"
@@ -19,23 +24,42 @@ resource "aws_codepipeline" "terraform_pipeline" {
     }
   }
 
+  # stage {
+  #   name = "Source"
+
+  #   action {
+  #     name             = "Download-Source"
+  #     category         = "Source"
+  #     owner            = "AWS"
+  #     version          = "1"
+  #     provider         = "CodeCommit"
+  #     namespace        = "SourceVariables"
+  #     output_artifacts = ["SourceOutput"]
+  #     run_order        = 1
+
+  #     configuration = {
+  #       RepositoryName       = var.source_repo_name
+  #       BranchName           = var.source_repo_branch
+  #       PollForSourceChanges = "true"
+  #     }
+  #   }
+  # }
+
   stage {
     name = "Source"
 
     action {
-      name             = "Download-Source"
+      name             = "Source"
       category         = "Source"
       owner            = "AWS"
+      provider         = "CodeStarSourceConnection"
       version          = "1"
-      provider         = "CodeCommit"
-      namespace        = "SourceVariables"
       output_artifacts = ["SourceOutput"]
-      run_order        = 1
 
       configuration = {
-        RepositoryName       = var.source_repo_name
-        BranchName           = var.source_repo_branch
-        PollForSourceChanges = "true"
+        ConnectionArn    = aws_codestarconnections_connection.github.arn
+        FullRepositoryId = "viniciusvec/nts"
+        BranchName       = "main"
       }
     }
   }

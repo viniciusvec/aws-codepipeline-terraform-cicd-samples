@@ -4,7 +4,7 @@ source_repo_name   = "terraform-iac-repo"
 source_repo_branch = "main"
 create_new_repo    = false
 repo_approvers_arn = "arn:aws:sts::123456789012:assumed-role/CodeCommitReview/*" #Update ARN (IAM Role/User/Group) of Approval Members
-create_new_role    = true
+create_new_role    = false                                                       # won't be needed with git
 #codepipeline_iam_role_name = <Role name> - Use this to specify the role name to be used by codepipeline if the create_new_role flag is set to false.
 stage_input = [
   { name = "validate", category = "Test", owner = "AWS", provider = "CodeBuild", input_artifacts = "SourceOutput", output_artifacts = "ValidateOutput" },
