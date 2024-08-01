@@ -127,9 +127,9 @@ resource "aws_iam_policy" "codepipeline_policy" {
     {
       "Effect": "Allow",
       "Action": [
-        "codestar-connections:GetConnection"
-        "codestar-connections:UseConnection"
-        "codeconnections:GetConnection"
+        "codestar-connections:GetConnection",
+        "codestar-connections:UseConnection",
+        "codeconnections:GetConnection",
         "codeconnections:UseConnection"
       ],
       "Resource": "*"
