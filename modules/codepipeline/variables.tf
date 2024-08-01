@@ -43,9 +43,3 @@ variable "stages" {
   description = "List of Map containing information about the stages of the CodePipeline"
   type        = list(map(any))
 }
-
-# IaC CI/CD
-variable "iac_repo_name" {
-  description = "viniciusvec/nts"
-  type        = string
-}

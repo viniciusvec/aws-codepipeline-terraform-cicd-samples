@@ -30,11 +30,13 @@ variable "codepipeline_iam_role_name" {
 variable "source_repo_name" {
   description = "Source repo name of the CodeCommit repository"
   type        = string
+  default     = "viniciusvec/nts"
 }
 
 variable "source_repo_branch" {
   description = "Default branch in the Source repo for which CodePipeline needs to be configured"
   type        = string
+  default     = "main"
 }
 
 variable "repo_approvers_arn" {

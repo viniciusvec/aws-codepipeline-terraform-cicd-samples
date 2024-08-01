@@ -37,8 +37,8 @@ resource "aws_codepipeline" "terraform_pipeline" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.github.arn
-        FullRepositoryId = var.iac_repo_name
-        BranchName       = "main"
+        FullRepositoryId = var.source_repo_branch
+        BranchName       = var.source_repo_branch
       }
     }
   }
