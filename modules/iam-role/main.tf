@@ -149,7 +149,9 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "iam:CreateRole",
         "iam:PassRole",
         "iam:PutRolePolicy",
-        "iam:DetachRolePolicy"
+        "iam:DetachRolePolicy",
+        "iam:DeleteRole",
+        "iam:DeletePolicy"
       ],
       "Resource": "*"
     }
