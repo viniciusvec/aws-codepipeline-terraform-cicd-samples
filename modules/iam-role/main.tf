@@ -142,9 +142,10 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "elasticloadbalancing:*",
         "rds:*",
         "tag:*",
+        "iam:Get*",
+        "iam:List*",
         "iam:AttachRolePolicy",
         "iam:CreatePolicy",
-        "iam:CreateRole",
         "iam:CreateRole",
         "iam:PassRole",
         "iam:PutRolePolicy"
