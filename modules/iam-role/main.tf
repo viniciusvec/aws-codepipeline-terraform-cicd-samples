@@ -25,100 +25,7 @@ resource "aws_iam_role" "codepipeline_role" {
         "Service": "codebuild.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
-    },
-    {  
-      "Effect": "Allow",  
-      "Action": [  
-        "ec2:AllocateAddress",
-        "ec2:AssociateRouteTable",
-        "ec2:AttachInternetGateway",
-        "ec2:AuthorizeSecurityGroupEgress",
-        "ec2:AuthorizeSecurityGroupIngress",
-        "ec2:CreateInternetGateway",
-        "ec2:CreateNatGateway",
-        "ec2:CreateRoute",
-        "ec2:CreateRouteTable",
-        "ec2:CreateSecurityGroup",
-        "ec2:CreateSubnet",
-        "ec2:CreateVpc",
-        "ec2:CreateVpc",
-        "ec2:DeleteInternetGateway",
-        "ec2:DeleteNatGateway",
-        "ec2:DeleteRouteTable",
-        "ec2:DeleteSecurityGroup",
-        "ec2:DeleteSubnet",
-        "ec2:DeleteVpc",
-        "ec2:DescribeAddresses",
-        "ec2:DescribeInternetGateways",
-        "ec2:DescribeNatGateways",
-        "ec2:DescribeRouteTables",
-        "ec2:DescribeSecurityGroups",
-        "ec2:DescribeSubnets",
-        "ec2:DescribeVpcs",
-        "ec2:DescribeVpcs",
-        "ec2:DisassociateRouteTable",
-        "ec2:ReleaseAddress",
-        "ec2:ReplaceRoute",
-        "ec2:RevokeSecurityGroupEgress",
-        "ec2:RevokeSecurityGroupIngress",
-        "ecs:CreateCluster",
-        "ecs:CreateCluster",
-        "ecs:CreateService",
-        "ecs:DeleteCluster",
-        "ecs:DeleteService",
-        "ecs:DescribeClusters",
-        "ecs:DescribeServices",
-        "ecs:DescribeTaskDefinition",
-        "ecs:RegisterTaskDefinition",
-        "ecs:UpdateService",
-        "elasticloadbalancing:CreateListener",
-        "elasticloadbalancing:CreateLoadBalancer",
-        "elasticloadbalancing:CreateTargetGroup",
-        "elasticloadbalancing:DeleteListener",
-        "elasticloadbalancing:DeleteLoadBalancer",
-        "elasticloadbalancing:DeleteTargetGroup",
-        "elasticloadbalancing:DeregisterTargets",
-        "elasticloadbalancing:DescribeListeners",
-        "elasticloadbalancing:DescribeLoadBalancerAttributes",
-        "elasticloadbalancing:DescribeLoadBalancers",
-        "elasticloadbalancing:DescribeTargetGroupAttributes",
-        "elasticloadbalancing:DescribeTargetGroups",
-        "elasticloadbalancing:DescribeTargetHealth",
-        "elasticloadbalancing:ModifyLoadBalancerAttributes",
-        "elasticloadbalancing:ModifyTargetGroup",
-        "elasticloadbalancing:ModifyTargetGroupAttributes",
-        "elasticloadbalancing:RegisterTargets",
-        "iam:AttachRolePolicy",
-        "iam:CreatePolicy",
-        "iam:CreateRole",
-        "iam:CreateRole",
-        "iam:PassRole",
-        "iam:PutRolePolicy",
-        "rds:CreateDBCluster",
-        "rds:CreateDBInstance",
-        "rds:CreateDBSubnetGroup",
-        "rds:DeleteDBCluster",
-        "rds:DeleteDBInstance",
-        "rds:DeleteDBSubnetGroup",
-        "rds:DescribeDBClusterBacktracks",
-        "rds:DescribeDBClusterBackups",
-        "rds:DescribeDBClusterEndpoints",
-        "rds:DescribeDBClusterParameterGroups",
-        "rds:DescribeDBClusters",
-        "rds:DescribeDBClusterSnapshots",
-        "rds:DescribeDBInstances",
-        "rds:DescribeDBSubnetGroups",
-        "rds:FailoverDBCluster",
-        "rds:ModifyDBCluster",
-        "rds:ModifyDBInstance",
-        "rds:StartDBCluster",
-        "rds:StopDBCluster",
-        "sts:AssumeRole",
-        "tag:GetResources",
-        "tag:TagResources"
-      ],  
-      "Resource": "*"  
-    }  
+    }
   ]
 }
 EOF
@@ -226,12 +133,28 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "codeconnections:UseConnection"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:*",
+        "ecs:*",
+        "elasticloadbalancing:*",
+        "rds:*",
+        "tag:*",
+        "iam:AttachRolePolicy",
+        "iam:CreatePolicy",
+        "iam:CreateRole",
+        "iam:CreateRole",
+        "iam:PassRole",
+        "iam:PutRolePolicy"
+      ],
+      "Resource": "*"
     }
   ]
 }
 EOF
 }
-
 
 # "Resource": "arn:aws:codestar-connections:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:connection/${aws_codestarconnections_connection.github.arn}*"
 #[aws_codestarconnections_connection.github.arn]
