@@ -5,7 +5,7 @@
 #Amazon Web Services, Inc. or Amazon Web Services EMEA SARL or both.
 
 resource "aws_codestarconnections_connection" "github" {
-  name          = "github-connection"
+  name          = "iac-github-connection"
   provider_type = "GitHub"
 }
 
@@ -24,27 +24,6 @@ resource "aws_codepipeline" "terraform_pipeline" {
     }
   }
 
-  # stage {
-  #   name = "Source"
-
-  #   action {
-  #     name             = "Download-Source"
-  #     category         = "Source"
-  #     owner            = "AWS"
-  #     version          = "1"
-  #     provider         = "CodeCommit"
-  #     namespace        = "SourceVariables"
-  #     output_artifacts = ["SourceOutput"]
-  #     run_order        = 1
-
-  #     configuration = {
-  #       RepositoryName       = var.source_repo_name
-  #       BranchName           = var.source_repo_branch
-  #       PollForSourceChanges = "true"
-  #     }
-  #   }
-  # }
-
   stage {
     name = "Source"
 
@@ -58,7 +37,7 @@ resource "aws_codepipeline" "terraform_pipeline" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.github.arn
-        FullRepositoryId = "viniciusvec/nts"
+        FullRepositoryId = var.iac_repo_name
         BranchName       = "main"
       }
     }
