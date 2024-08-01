@@ -158,10 +158,6 @@ resource "aws_iam_policy" "codepipeline_policy" {
 EOF
 }
 
-# "Resource": "arn:aws:codestar-connections:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:connection/${aws_codestarconnections_connection.github.arn}*"
-#[aws_codestarconnections_connection.github.arn]
-#arn:aws:codestar-connections:us-west-2:123456789012:connection/39e4c34d-e13a-4e94-a886-ea67651bf042
-
 resource "aws_iam_role_policy_attachment" "codepipeline_role_attach" {
   count      = var.create_new_role ? 1 : 0
   role       = aws_iam_role.codepipeline_role[0].name
