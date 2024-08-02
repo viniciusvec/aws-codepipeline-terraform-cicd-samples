@@ -19,4 +19,9 @@ output "arn" {
   description = "The arn of the CodePipeline"
 }
 
+output "github_connector_name" {
+  value       = aws_codestarconnections_connection.github.name
+  description = "The name of the CodePipeline Github connector"
+}
+
 

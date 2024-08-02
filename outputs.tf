@@ -19,42 +19,48 @@
 #   description = "The ARN of the Codecommit repository"
 # }
 
-output "codebuild_name" {
-  value       = module.codebuild_terraform.name
-  description = "The Name of the Codebuild Project"
-}
+# output "codebuild_name" {
+#   value       = module.codebuild_terraform.name
+#   description = "The Name of the Codebuild Project"
+# }
 
-output "codebuild_arn" {
-  value       = module.codebuild_terraform.arn
-  description = "The ARN of the Codebuild Project"
-}
+# output "codebuild_arn" {
+#   value       = module.codebuild_terraform.arn
+#   description = "The ARN of the Codebuild Project"
+# }
 
 output "codepipeline_name" {
   value       = module.codepipeline_terraform.name
   description = "The Name of the CodePipeline"
 }
 
-output "codepipeline_arn" {
-  value       = module.codepipeline_terraform.arn
-  description = "The ARN of the CodePipeline"
+
+output "github_connector_name" {
+  value       = module.codepipeline_terraform.github_connector_name
+  description = "The name of the CodePipeline Github connector"
 }
 
-output "iam_arn" {
-  value       = module.codepipeline_iam_role.role_arn
-  description = "The ARN of the IAM Role used by the CodePipeline"
-}
+# output "codepipeline_arn" {
+#   value       = module.codepipeline_terraform.arn
+#   description = "The ARN of the CodePipeline"
+# }
 
-output "kms_arn" {
-  value       = module.codepipeline_kms.arn
-  description = "The ARN of the KMS key used in the codepipeline"
-}
+# output "iam_arn" {
+#   value       = module.codepipeline_iam_role.role_arn
+#   description = "The ARN of the IAM Role used by the CodePipeline"
+# }
 
-output "s3_arn" {
-  value       = module.s3_artifacts_bucket.arn
-  description = "The ARN of the S3 Bucket"
-}
+# output "kms_arn" {
+#   value       = module.codepipeline_kms.arn
+#   description = "The ARN of the KMS key used in the codepipeline"
+# }
 
-output "s3_bucket_name" {
-  value       = module.s3_artifacts_bucket.bucket
-  description = "The Name of the S3 Bucket"
-}
+# output "s3_arn" {
+#   value       = module.s3_artifacts_bucket.arn
+#   description = "The ARN of the S3 Bucket"
+# }
+
+# output "s3_bucket_name" {
+#   value       = module.s3_artifacts_bucket.bucket
+#   description = "The Name of the S3 Bucket"
+# }
