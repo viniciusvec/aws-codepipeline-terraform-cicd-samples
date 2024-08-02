@@ -21,24 +21,6 @@ variable "create_new_role" {
   default     = true
 }
 
-variable "codepipeline_iam_role_name" {
-  description = "Name of the IAM role to be used by the Codepipeline"
-  type        = string
-  default     = "codepipeline-role"
-}
-
-variable "source_repo_name" {
-  description = "Source repo name of the CodeCommit repository"
-  type        = string
-  default     = "viniciusvec/nts"
-}
-
-variable "source_repo_branch" {
-  description = "Default branch in the Source repo for which CodePipeline needs to be configured"
-  type        = string
-  default     = "main"
-}
-
 variable "repo_approvers_arn" {
   description = "ARN or ARN pattern for the IAM User/Role/Group that can be used for approving Pull Requests"
   type        = string
@@ -87,4 +69,22 @@ variable "build_project_source" {
   description = "aws/codebuild/standard:4.0"
   type        = string
   default     = "CODEPIPELINE"
+}
+
+variable "source_repo_name" {
+  description = "Source repo name of the CodeCommit repository"
+  type        = string
+  default     = "viniciusvec/nts"
+}
+
+variable "source_repo_branch" {
+  description = "Default branch in the Source repo for which CodePipeline needs to be configured"
+  type        = string
+  default     = "main"
+}
+
+variable "codepipeline_iam_role_name" {
+  description = "Name of the IAM role to be used by the Codepipeline"
+  type        = string
+  default     = "iac-codepipeline-role"
 }

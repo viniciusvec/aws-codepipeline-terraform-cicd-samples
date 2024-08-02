@@ -102,5 +102,7 @@ module "codepipeline_terraform" {
     Environment  = var.environment
     Account_ID   = local.account_id
     Region       = local.region
+    Project      = "nts"
+    Pipeline     = "iac"
   }
 }
