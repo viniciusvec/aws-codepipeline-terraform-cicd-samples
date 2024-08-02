@@ -73,24 +73,6 @@ resource "aws_iam_policy" "codepipeline_policy" {
     {
       "Effect": "Allow",
       "Action": [
-         "codecommit:GitPull",
-         "codecommit:GitPush",
-         "codecommit:GetBranch",
-         "codecommit:CreateCommit",
-         "codecommit:ListRepositories",
-         "codecommit:BatchGetCommits",
-         "codecommit:BatchGetRepositories",
-         "codecommit:GetCommit",
-         "codecommit:GetRepository",
-         "codecommit:GetUploadArchiveStatus",
-         "codecommit:ListBranches",
-         "codecommit:UploadArchive"
-      ],
-      "Resource": "arn:aws:codecommit:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:${var.source_repository_name}"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
         "codebuild:BatchGetBuilds",
         "codebuild:StartBuild",
         "codebuild:BatchGetProjects"
@@ -127,19 +109,12 @@ resource "aws_iam_policy" "codepipeline_policy" {
     {
       "Effect": "Allow",
       "Action": [
-        "codestar-connections:GetConnection",
-        "codestar-connections:UseConnection",
-        "codeconnections:GetConnection",
-        "codeconnections:UseConnection"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
         "ec2:*",
         "ecs:*",
+        "s3:*",
+        "ecr:*",
         "vpc:*",
+        "codeconnections:*",
         "elasticloadbalancing:*",
         "rds:*",
         "tag:*",
