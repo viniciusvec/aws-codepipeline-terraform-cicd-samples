@@ -10,8 +10,9 @@ resource "aws_codestarconnections_connection" "github" {
 }
 
 resource "aws_codebuild_project" "build" {
-  name         = "build"
-  service_role = var.codepipeline_role_arn
+  name          = "build"
+  build_timeout = 30
+  service_role  = var.codepipeline_role_arn
   artifacts {
     type = "CODEPIPELINE"
   }
@@ -29,8 +30,9 @@ resource "aws_codebuild_project" "build" {
 }
 
 resource "aws_codebuild_project" "destroy" {
-  name         = "codebuilddestroy"
-  service_role = var.codepipeline_role_arn
+  name          = "codebuilddestroy"
+  build_timeout = 30
+  service_role  = var.codepipeline_role_arn
   artifacts {
     type = "CODEPIPELINE"
   }
