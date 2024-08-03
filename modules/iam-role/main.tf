@@ -48,6 +48,7 @@ resource "aws_iam_policy" "codepipeline_policy" {
         "logs:*",
         "ec2:*",
         "kms:*",
+        "secretsmanager:*",
         "ecs:*",
         "codebuild:*",
         "codepipeline:*",
